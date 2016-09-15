@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Marvin Pinto
+  description: |
+    Ansible Galaxy role to install and manage Bitly's OAuth2 Proxy.
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+    - name: Ubuntu
+      versions:
+       - trusty
+  galaxy_tags:
+    - ubuntu
+    - oauth2proxy
+dependencies: []
