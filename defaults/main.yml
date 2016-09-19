@@ -1,0 +1,15 @@
+---
+# Corresponds to the GitHub releases
+# https://github.com/bitly/oauth2_proxy/releases
+oauth2_proxy_version: '2.1'
+
+# User to run the OAuth2 Proxy daemon as
+oauth2_proxy_daemon_user: 'oauth2daemon'
+
+# OAuth2 Proxy cli arguments
+oauth2_proxy_cli_args: >-
+  --upstream="http://127.0.0.1:8080/"
+  --cookie-secret="muchsekr3t"
+  --client-id="doge"
+  --client-secret="suchsekuR3"
+  --email-domain=*
