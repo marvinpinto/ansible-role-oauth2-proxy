@@ -1,0 +1,5 @@
+---
+- name: 'restart-ansible-role-oauth2proxy'
+  service:
+    name: 'oauth2proxy'
+    state: 'restarted'

@@ -1,0 +1,8 @@
+description "OAuth2 Proxy"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [016]
+setuid {{ oauth2_proxy_daemon_user }}
+setgid root
+respawn
+respawn limit 10 5
+exec /usr/local/bin/oauth2_proxy {{ oauth2_proxy_cli_args }}
