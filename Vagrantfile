@@ -10,7 +10,15 @@ ln -fTs /vagrant /opt/ansible_roles/ansible-role-oauth2-proxy
 SCRIPT
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.define "ubuntu" do |ubuntu|
+    ubuntu.vm.box = "ubuntu/trusty64"
+  end
+
+  config.vm.define "debian" do |debian|
+    debian.vm.box = "debian/jessie64"
+  end
+
   config.vm.network "public_network"
 
   config.vm.provider "virtualbox" do |v|

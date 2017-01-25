@@ -1,0 +1,18 @@
+---
+- name: "Create bin folder"
+  file: path=/opt/oauth2_proxy/bin state=directory owner=oauth2_proxy
+
+- name: "Untar the oauth2-proxy binary into /opt/oauth_proxy/bin"
+  command: '/bin/tar -C /opt/oauth2_proxy/bin --strip-components=1 -zxvf /tmp/oauth2_proxy-{{ oauth2_proxy_version }}.linux-amd64.go1.6.tar.gz'
+  args:
+    creates: '/opt/oauth2_proxy/bin/oauth2_proxy'
+  notify: 'restart-ansible-role-oauth2proxy'
+
+- name: "Create service unit file"
+  template:
+    src: 'debian-systemd-unit-file.j2'
+    dest: '/lib/systemd/system/oauth2proxy'
+    owner: root
+    group: root
+    mode: '0644'
+  notify: 'restart-ansible-role-oauth2proxy'
