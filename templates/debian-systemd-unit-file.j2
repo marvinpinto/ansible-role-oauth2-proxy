@@ -1,0 +1,11 @@
+[Service]
+ExecStart=/opt/oauth2_proxy/bin/oauth2_proxy {{ oauth2_proxy_cli_args }}
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=oauthproxy
+User={{ oauth2_proxy_daemon_user }}
+Group={{ oauth2_proxy_daemon_user }}
+
+[Install]
+WantedBy=multi-user.target
