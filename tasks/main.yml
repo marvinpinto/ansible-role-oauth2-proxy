@@ -6,9 +6,14 @@
     mode: '0644'
   notify: 'restart-ansible-role-oauth2proxy'
 
+- name: 'Create the group for the oauth2_proxy daemon user'
+  group:
+    name: "{{ oauth2_proxy_daemon_user }}"
+
 - name: 'Create the user that the oauth2_proxy daemon will run as'
   user:
     name: "{{ oauth2_proxy_daemon_user }}"
+    group: "{{ oauth2_proxy_daemon_user }}"
 
 - include: "{{ ansible_distribution }}.yml"
 
