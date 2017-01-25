@@ -6,24 +6,11 @@
     mode: '0644'
   notify: 'restart-ansible-role-oauth2proxy'
 
-- name: "Untar the oauth2-proxy binary into /usr/local/bin"
-  command: '/bin/tar -C /usr/local/bin --strip-components=1 -zxvf /tmp/oauth2_proxy-{{ oauth2_proxy_version }}.linux-amd64.go1.6.tar.gz'
-  args:
-    creates: '/usr/local/bin/oauth2_proxy'
-  notify: 'restart-ansible-role-oauth2proxy'
-
 - name: 'Create the user that the oauth2_proxy daemon will run as'
   user:
     name: "{{ oauth2_proxy_daemon_user }}"
 
-- name: 'Set the contents of the /etc/init/oauth2proxy.conf file'
-  template:
-    src: 'oauth2proxy-init.j2'
-    dest: '/etc/init/oauth2proxy.conf'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
-  notify: 'restart-ansible-role-oauth2proxy'
+- include: "{{ ansible_distribution }}.yml"
 
 - meta: flush_handlers
 
