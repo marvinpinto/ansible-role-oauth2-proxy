@@ -3,3 +3,6 @@
   service:
     name: 'oauth2proxy'
     state: 'restarted'
+
+- name: 'systemd-daemon-reload'
+  command: 'systemctl daemon-reload'

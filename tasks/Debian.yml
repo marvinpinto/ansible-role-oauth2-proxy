@@ -15,4 +15,6 @@
     owner: root
     group: root
     mode: '0644'
-  notify: 'restart-ansible-role-oauth2proxy'
+  notify: 
+    - 'systemd-daemon-reload'
+    - 'restart-ansible-role-oauth2proxy'
